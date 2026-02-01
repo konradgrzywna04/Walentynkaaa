@@ -160,6 +160,16 @@
       from { opacity: 0; transform: scale(0.96); }
       to { opacity: 1; transform: scale(1); }
     }
+
+    /* Tekst z animacją pisania */
+    #loveText {
+      font-size: 18px;
+      line-height: 1.7;
+      color: #b5173a;
+      font-family: 'Poppins', sans-serif;
+      white-space: pre-wrap;
+      text-align: left;
+    }
   </style>
 </head>
 <body>
@@ -172,34 +182,61 @@
   <div class="pet cat">🐱</div>
 
   <!-- Muzyka -->
-  <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/10/26/audio_52cfc5e3de.mp3">
+  <audio id="romantic" autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/10/26/audio_52cfc5e3de.mp3" type="audio/mpeg">
   </audio>
 
   <audio id="sad">
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_1c3f5e9b8c.mp3">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_1c3f5e9b8c.mp3" type="audio/mpeg">
   </audio>
 
   <div class="card" id="card">
     <h1>Julia, czy zostaniesz moją walentynką? ❤️</h1>
     <button id="yes">Tak 💕</button>
     <button id="no">Muszę się zastanowić…</button>
+    <p id="loveText"></p>
   </div>
 
   <script>
     const yesBtn = document.getElementById("yes");
     const noBtn = document.getElementById("no");
     const card = document.getElementById("card");
+    const loveText = document.getElementById("loveText");
     const sadAudio = document.getElementById("sad");
 
+    const loveMessage = `
+Julia,
+
+Od kiedy jesteś w moim życiu, 
+nauczyłem się dostrzegać piękno w drobnych rzeczach. 
+Twój uśmiech, Twój spokój, sposób, w jaki patrzysz na świat — 
+to wszystko daje mi poczucie równowagi i nadziei.
+
+Nie chcę obiecywać wielkich słów ani nierealnych rzeczy. 
+Chcę po prostu być blisko Ciebie, 
+dzielić codzienność i wspierać Cię w tym, co ważne. 
+Chcę, żebyś wiedziała, że zawsze możesz na mnie liczyć.
+
+Każdy dzień z Tobą byłby dla mnie prezentem — 
+czasem cichym i spokojnym, czasem pełnym śmiechu. 
+Chciałbym, abyśmy razem budowali coś prawdziwego, 
+pełnego zaufania, cierpliwości i ciepła.
+
+Z całego serca,
+Konrad
+`;
+
     yesBtn.addEventListener("click", () => {
-      card.innerHTML = `
-        <h1>Julia ❤️</h1>
-        <p>
-          Każdy dzień z Tobą byłby piękniejszy.<br><br>
-          Z całego serca,<br><strong>Konrad</strong>
-        </p>
-      `;
+      loveText.innerHTML = '';
+      let index = 0;
+      function typeWriter() {
+        if(index < loveMessage.length){
+          loveText.innerHTML += loveMessage.charAt(index) === '\n' ? '<br>' : loveMessage.charAt(index);
+          index++;
+          setTimeout(typeWriter, 35);
+        }
+      }
+      typeWriter();
     });
 
     noBtn.addEventListener("click", () => {
@@ -218,6 +255,7 @@
         tear.className = "tear";
         tear.textContent = "💧";
         tear.style.left = Math.random() * 100 + "vw";
+        tear.style.animationDuration = (Math.random() * 2 + 2) + "s";
         document.body.appendChild(tear);
         setTimeout(() => tear.remove(), 3000);
       }
