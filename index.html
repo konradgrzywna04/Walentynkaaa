@@ -2,75 +2,84 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Moja Walentynka 💕</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Julia 💕</title>
 
-  <!-- Romantyczna czcionka -->
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
 
   <style>
     body {
       margin: 0;
-      height: 100vh;
-      background: linear-gradient(180deg, #ffd6e8, #fff0f6);
+      min-height: 100vh;
+      background: linear-gradient(180deg, #ffe0ec, #fff5f9);
       display: flex;
       justify-content: center;
       align-items: center;
       font-family: 'Dancing Script', cursive;
       overflow: hidden;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.85);
-      padding: 50px 60px;
-      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 35px 28px;
+      border-radius: 28px;
       text-align: center;
-      box-shadow: 0 30px 60px rgba(255, 105, 180, 0.25);
-      backdrop-filter: blur(8px);
+      box-shadow: 0 25px 60px rgba(255, 105, 180, 0.3);
+      backdrop-filter: blur(10px);
       z-index: 2;
-      animation: fadeIn 2s ease;
+      animation: fadeIn 1.8s ease;
+      width: 100%;
+      max-width: 420px;
     }
 
     h1 {
-      font-size: 42px;
+      font-size: 34px;
       color: #c9184a;
-      margin-bottom: 40px;
+      margin-bottom: 22px;
+    }
+
+    p {
+      font-size: 22px;
+      color: #c9184a;
+      line-height: 1.5;
     }
 
     button {
-      padding: 14px 32px;
+      padding: 14px 30px;
       font-size: 22px;
       border: none;
       border-radius: 30px;
       cursor: pointer;
-      margin: 10px;
+      margin: 10px 6px;
       font-family: 'Dancing Script', cursive;
       transition: all 0.3s ease;
+      width: 100%;
+      max-width: 260px;
     }
 
     #yes {
       background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
       color: white;
-      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.4);
+      box-shadow: 0 12px 28px rgba(255, 77, 109, 0.45);
     }
 
     #yes:hover {
-      transform: scale(1.08);
+      transform: scale(1.06);
     }
 
     #no {
       background: transparent;
-      color: #999;
-    }
-
-    #no:hover {
-      color: #666;
+      color: #aaa;
     }
 
     .heart {
       position: absolute;
-      font-size: 20px;
+      font-size: 18px;
       animation: float 10s linear infinite;
-      opacity: 0.8;
+      opacity: 0.65;
+      pointer-events: none;
     }
 
     @keyframes float {
@@ -99,9 +108,14 @@
 </head>
 <body>
 
+  <!-- Muzyka w tle -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7c3be0c3c1.mp3" type="audio/mpeg">
+  </audio>
+
   <div class="card" id="card">
-    <h1>Czy zostaniesz moją walentynką? 💕</h1>
-    <button id="yes">Tak, z radością 💖</button>
+    <h1>Julio, czy zostaniesz moją walentynką? 💕</h1>
+    <button id="yes">Tak, chcę 💖</button>
     <button id="no">Jeszcze chwilkę…</button>
   </div>
 
@@ -111,10 +125,19 @@
 
     yesBtn.addEventListener("click", () => {
       card.innerHTML = `
-        <h1>Dziękuję… 💗</h1>
-        <p style="font-size:28px; color:#c9184a;">
-          Każdy dzień jest piękniejszy,<br>
-          gdy mogę go dzielić z Tobą.
+        <h1>Moja Julio 💗</h1>
+        <p>
+          Od momentu, gdy pojawiłaś się w moim życiu,<br>
+          wszystko nabrało sensu.<br><br>
+
+          Twój uśmiech potrafi rozjaśnić każdy dzień,<br>
+          a Twoja obecność sprawia, że czuję spokój.<br><br>
+
+          Jeśli pozwolisz,<br>
+          chciałbym iść przez ten świat obok Ciebie —<br>
+          dzień po dniu, serce przy sercu. 💕<br><br>
+
+          <strong>Z miłością,<br>Konrad</strong>
         </p>
       `;
     });
@@ -135,5 +158,4 @@
 
 </body>
 </html>
-
 
