@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Julia ❤️</title>
 
-  <!-- Eleganckie i czytelne czcionki -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
@@ -19,10 +18,8 @@
       font-family: 'Poppins', sans-serif;
       overflow: hidden;
       padding: 20px;
-      box-sizing: border-box;
     }
 
-    /* Dekoracyjne tło */
     .bg-shape {
       position: absolute;
       width: 300px;
@@ -32,7 +29,6 @@
       filter: blur(40px);
       z-index: 0;
     }
-
     .bg1 { top: -80px; left: -80px; }
     .bg2 { bottom: -100px; right: -100px; }
 
@@ -77,11 +73,6 @@
     #yes {
       background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
       color: white;
-      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.4);
-    }
-
-    #yes:hover {
-      transform: scale(1.05);
     }
 
     #no {
@@ -89,6 +80,7 @@
       color: #aaa;
     }
 
+    /* Serduszka */
     .heart {
       position: absolute;
       font-size: 18px;
@@ -97,37 +89,66 @@
       pointer-events: none;
     }
 
-    @keyframes float {
-      0% {
+    /* SMUTNY OVERLAY */
+    .sad-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 20, 30, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      font-size: 120px;
+      color: #fff;
+      z-index: 999;
+      animation: fadeInSad 1s ease;
+    }
+
+    .sad-text {
+      font-size: 26px;
+      margin-top: 20px;
+      opacity: 0.8;
+    }
+
+    .tear {
+      position: absolute;
+      top: -20px;
+      font-size: 22px;
+      animation: rain 3s linear infinite;
+      opacity: 0.6;
+    }
+
+    @keyframes rain {
+      to {
         transform: translateY(110vh);
         opacity: 0;
       }
-      20% { opacity: 1; }
-      100% {
-        transform: translateY(-10vh);
+    }
+
+    @keyframes float {
+      to {
+        transform: translateY(-110vh);
         opacity: 0;
       }
     }
 
     @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: scale(0.96);
-      }
-      to {
-        opacity: 1;
-        transform: scale(1);
-      }
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInSad {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Dekoracyjne tło -->
   <div class="bg-shape bg1"></div>
   <div class="bg-shape bg2"></div>
 
-  <!-- Romantyczna muzyka -->
+  <!-- Muzyka romantyczna -->
   <audio autoplay loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/10/26/audio_52cfc5e3de.mp3" type="audio/mpeg">
   </audio>
@@ -139,8 +160,9 @@
   </div>
 
   <script>
-    const card = document.getElementById("card");
     const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+    const card = document.getElementById("card");
 
     yesBtn.addEventListener("click", () => {
       card.innerHTML = `
@@ -152,12 +174,30 @@
           Twoja obecność daje mi spokój,<br>
           a Twój uśmiech potrafi zmienić wszystko.<br><br>
 
-          Chciałbym, żebyśmy szli dalej razem —<br>
-          szczerze, spokojnie i z sercem. 💕<br><br>
-
-          <strong>Z całego serca,<br>Konrad</strong>
+          Z całego serca,<br><strong>Konrad</strong>
         </p>
       `;
+    });
+
+    noBtn.addEventListener("click", () => {
+      const overlay = document.createElement("div");
+      overlay.className = "sad-overlay";
+      overlay.innerHTML = `
+        😔
+        <div class="sad-text">Chyba potrzebuję chwili…</div>
+      `;
+      document.body.appendChild(overlay);
+
+      for (let i = 0; i < 40; i++) {
+        const tear = document.createElement("div");
+        tear.className = "tear";
+        tear.textContent = "💧";
+        tear.style.left = Math.random() * 100 + "vw";
+        tear.style.animationDuration = (Math.random() * 2 + 2) + "s";
+        document.body.appendChild(tear);
+
+        setTimeout(() => tear.remove(), 3000);
+      }
     });
 
     function createHeart() {
@@ -165,9 +205,7 @@
       heart.className = "heart";
       heart.textContent = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 4 + 6) + "s";
       document.body.appendChild(heart);
-
       setTimeout(() => heart.remove(), 9000);
     }
 
