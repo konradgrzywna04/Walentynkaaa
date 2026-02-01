@@ -22,22 +22,9 @@
     h1 {
       margin-bottom: 30px;
     }
-    button {
-      font-size: 18px;
-      padding: 10px 25px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      margin: 0 10px;
-    }
-    .yes {
-      background: #e53935;
-      color: white;
-    }
-    .no {
-      background: #607d8b;
-      color: white;
-      position: relative;
+    <button type="button" id="yes">Tak</button>
+<button type="button" id="no">Nie</button>
+   
     }
   </style>
 </head>
@@ -70,6 +57,36 @@
   }
 </script>
 
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const yesBtn = document.getElementById("yes");
+    const noBtn = document.getElementById("no");
+
+    yesBtn.addEventListener("click", function () {
+      document.body.innerHTML = 
+        <div style="
+          height:100vh;
+          display:flex;
+          justify-content:center;
+          align-items:center;
+          flex-direction:column;
+          font-size:40px;
+          color:#b30059;
+          text-align:center;
+        ">
+          ❤️ Wiedziałem! ❤️<br>
+          Kocham Cię 💕
+        </div>
+      ;
+    });
+
+    noBtn.addEventListener("mouseover", function () {
+      noBtn.style.position = "absolute";
+      noBtn.style.left = Math.random() * 80 + "%";
+      noBtn.style.top = Math.random() * 80 + "%";
+    });
+  });
+</script>
 </body>
 </html>
 
