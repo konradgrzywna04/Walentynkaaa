@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Julia ❤️</title>
 
-  <!-- Czytelne, eleganckie czcionki -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato&display=swap" rel="stylesheet">
+  <!-- Eleganckie i czytelne czcionki -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -16,22 +16,36 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Lato', sans-serif;
+      font-family: 'Poppins', sans-serif;
       overflow: hidden;
       padding: 20px;
       box-sizing: border-box;
     }
 
+    /* Dekoracyjne tło */
+    .bg-shape {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255,182,193,0.6), transparent);
+      border-radius: 50%;
+      filter: blur(40px);
+      z-index: 0;
+    }
+
+    .bg1 { top: -80px; left: -80px; }
+    .bg2 { bottom: -100px; right: -100px; }
+
     .card {
-      background: rgba(255, 255, 255, 0.95);
-      padding: 32px 26px;
-      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 34px 26px;
+      border-radius: 26px;
       text-align: center;
-      box-shadow: 0 20px 50px rgba(200, 50, 90, 0.25);
+      box-shadow: 0 25px 60px rgba(200, 50, 90, 0.25);
       z-index: 2;
       max-width: 420px;
       width: 100%;
-      animation: fadeIn 1.5s ease;
+      animation: fadeIn 1.4s ease;
     }
 
     h1 {
@@ -44,7 +58,7 @@
     p {
       font-size: 18px;
       color: #b5173a;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     button {
@@ -57,6 +71,7 @@
       cursor: pointer;
       margin: 10px 0;
       transition: 0.3s ease;
+      font-family: 'Poppins', sans-serif;
     }
 
     #yes {
@@ -108,14 +123,18 @@
 </head>
 <body>
 
+  <!-- Dekoracyjne tło -->
+  <div class="bg-shape bg1"></div>
+  <div class="bg-shape bg2"></div>
+
   <!-- Romantyczna muzyka -->
   <audio autoplay loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/10/26/audio_52cfc5e3de.mp3" type="audio/mpeg">
   </audio>
 
   <div class="card" id="card">
-    <h1>Julio, czy zostaniesz moją walentynką? ❤️</h1>
-    <button id="yes">Tak, chcę 💕</button>
+    <h1>Julia, czy zostaniesz moją walentynką? ❤️</h1>
+    <button id="yes">Tak 💕</button>
     <button id="no">Muszę się zastanowić…</button>
   </div>
 
@@ -134,7 +153,7 @@
           a Twój uśmiech potrafi zmienić wszystko.<br><br>
 
           Chciałbym, żebyśmy szli dalej razem —<br>
-          powoli, szczerze i z sercem. 💕<br><br>
+          szczerze, spokojnie i z sercem. 💕<br><br>
 
           <strong>Z całego serca,<br>Konrad</strong>
         </p>
@@ -152,7 +171,7 @@
       setTimeout(() => heart.remove(), 9000);
     }
 
-    setInterval(createHeart, 600);
+    setInterval(createHeart, 650);
   </script>
 
 </body>
