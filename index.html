@@ -3,70 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Julia 💕</title>
+  <title>Julia ❤️</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+  <!-- Czytelne, eleganckie czcionki -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Lato&display=swap" rel="stylesheet">
 
   <style>
     body {
       margin: 0;
       min-height: 100vh;
-      background: linear-gradient(180deg, #ffe0ec, #fff5f9);
+      background: linear-gradient(180deg, #fde2e4, #fff1f3);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-family: 'Dancing Script', cursive;
+      font-family: 'Lato', sans-serif;
       overflow: hidden;
       padding: 20px;
       box-sizing: border-box;
     }
 
     .card {
-      background: rgba(255, 255, 255, 0.9);
-      padding: 35px 28px;
-      border-radius: 28px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 32px 26px;
+      border-radius: 24px;
       text-align: center;
-      box-shadow: 0 25px 60px rgba(255, 105, 180, 0.3);
-      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 50px rgba(200, 50, 90, 0.25);
       z-index: 2;
-      animation: fadeIn 1.8s ease;
-      width: 100%;
       max-width: 420px;
+      width: 100%;
+      animation: fadeIn 1.5s ease;
     }
 
     h1 {
-      font-size: 34px;
-      color: #c9184a;
-      margin-bottom: 22px;
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      color: #b5173a;
+      margin-bottom: 20px;
     }
 
     p {
-      font-size: 22px;
-      color: #c9184a;
-      line-height: 1.5;
+      font-size: 18px;
+      color: #b5173a;
+      line-height: 1.6;
     }
 
     button {
-      padding: 14px 30px;
-      font-size: 22px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-      margin: 10px 6px;
-      font-family: 'Dancing Script', cursive;
-      transition: all 0.3s ease;
       width: 100%;
       max-width: 260px;
+      padding: 14px;
+      font-size: 18px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 10px 0;
+      transition: 0.3s ease;
     }
 
     #yes {
       background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
       color: white;
-      box-shadow: 0 12px 28px rgba(255, 77, 109, 0.45);
+      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.4);
     }
 
     #yes:hover {
-      transform: scale(1.06);
+      transform: scale(1.05);
     }
 
     #no {
@@ -77,19 +77,19 @@
     .heart {
       position: absolute;
       font-size: 18px;
-      animation: float 10s linear infinite;
-      opacity: 0.65;
+      animation: float 9s linear infinite;
+      opacity: 0.6;
       pointer-events: none;
     }
 
     @keyframes float {
       0% {
-        transform: translateY(110vh) scale(0.8);
+        transform: translateY(110vh);
         opacity: 0;
       }
       20% { opacity: 1; }
       100% {
-        transform: translateY(-10vh) scale(1.4);
+        transform: translateY(-10vh);
         opacity: 0;
       }
     }
@@ -97,7 +97,7 @@
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: scale(0.95);
+        transform: scale(0.96);
       }
       to {
         opacity: 1;
@@ -108,36 +108,35 @@
 </head>
 <body>
 
-  <!-- Muzyka w tle -->
+  <!-- Romantyczna muzyka -->
   <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_7c3be0c3c1.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/10/26/audio_52cfc5e3de.mp3" type="audio/mpeg">
   </audio>
 
   <div class="card" id="card">
-    <h1>Julio, czy zostaniesz moją walentynką? 💕</h1>
-    <button id="yes">Tak, chcę 💖</button>
-    <button id="no">Jeszcze chwilkę…</button>
+    <h1>Julio, czy zostaniesz moją walentynką? ❤️</h1>
+    <button id="yes">Tak, chcę 💕</button>
+    <button id="no">Muszę się zastanowić…</button>
   </div>
 
   <script>
-    const yesBtn = document.getElementById("yes");
     const card = document.getElementById("card");
+    const yesBtn = document.getElementById("yes");
 
     yesBtn.addEventListener("click", () => {
       card.innerHTML = `
-        <h1>Moja Julio 💗</h1>
+        <h1>Julia ❤️</h1>
         <p>
-          Od momentu, gdy pojawiłaś się w moim życiu,<br>
-          wszystko nabrało sensu.<br><br>
+          Od kiedy jesteś w moim życiu,<br>
+          każdy dzień ma w sobie coś wyjątkowego.<br><br>
 
-          Twój uśmiech potrafi rozjaśnić każdy dzień,<br>
-          a Twoja obecność sprawia, że czuję spokój.<br><br>
+          Twoja obecność daje mi spokój,<br>
+          a Twój uśmiech potrafi zmienić wszystko.<br><br>
 
-          Jeśli pozwolisz,<br>
-          chciałbym iść przez ten świat obok Ciebie —<br>
-          dzień po dniu, serce przy sercu. 💕<br><br>
+          Chciałbym, żebyśmy szli dalej razem —<br>
+          powoli, szczerze i z sercem. 💕<br><br>
 
-          <strong>Z miłością,<br>Konrad</strong>
+          <strong>Z całego serca,<br>Konrad</strong>
         </p>
       `;
     });
@@ -145,17 +144,18 @@
     function createHeart() {
       const heart = document.createElement("div");
       heart.className = "heart";
-      heart.innerText = "💗";
+      heart.textContent = "❤️";
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (Math.random() * 5 + 6) + "s";
+      heart.style.animationDuration = (Math.random() * 4 + 6) + "s";
       document.body.appendChild(heart);
 
-      setTimeout(() => heart.remove(), 10000);
+      setTimeout(() => heart.remove(), 9000);
     }
 
-    setInterval(createHeart, 500);
+    setInterval(createHeart, 600);
   </script>
 
 </body>
 </html>
+
 
