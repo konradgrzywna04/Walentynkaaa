@@ -20,6 +20,7 @@
       padding: 20px;
     }
 
+    /* Tło */
     .bg-shape {
       position: absolute;
       width: 300px;
@@ -32,16 +33,47 @@
     .bg1 { top: -80px; left: -80px; }
     .bg2 { bottom: -100px; right: -100px; }
 
+    /* BIEGAJĄCE ZWIERZAKI */
+    .pet {
+      position: absolute;
+      bottom: 30px;
+      font-size: 42px;
+      opacity: 0.5;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .dog {
+      left: -60px;
+      animation: runRight 14s linear infinite;
+    }
+
+    .cat {
+      right: -60px;
+      animation: runLeft 18s linear infinite;
+    }
+
+    @keyframes runRight {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(120vw); }
+    }
+
+    @keyframes runLeft {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-120vw); }
+    }
+
+    /* KARTA */
     .card {
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255,255,255,0.96);
       padding: 34px 26px;
       border-radius: 26px;
       text-align: center;
-      box-shadow: 0 25px 60px rgba(200, 50, 90, 0.25);
+      box-shadow: 0 25px 60px rgba(200,50,90,0.25);
       z-index: 2;
       max-width: 420px;
       width: 100%;
-      animation: fadeIn 1.4s ease;
+      animation: fadeIn 1.2s ease;
     }
 
     h1 {
@@ -54,7 +86,7 @@
     p {
       font-size: 18px;
       color: #b5173a;
-      line-height: 1.65;
+      line-height: 1.6;
     }
 
     button {
@@ -66,8 +98,6 @@
       border-radius: 25px;
       cursor: pointer;
       margin: 10px 0;
-      transition: 0.3s ease;
-      font-family: 'Poppins', sans-serif;
     }
 
     #yes {
@@ -80,49 +110,13 @@
       color: #aaa;
     }
 
-    /* Serduszka */
+    /* SERCA */
     .heart {
       position: absolute;
       font-size: 18px;
       animation: float 9s linear infinite;
       opacity: 0.6;
       pointer-events: none;
-    }
-
-    /* SMUTNY OVERLAY */
-    .sad-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(20, 20, 30, 0.85);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-size: 120px;
-      color: #fff;
-      z-index: 999;
-      animation: fadeInSad 1s ease;
-    }
-
-    .sad-text {
-      font-size: 26px;
-      margin-top: 20px;
-      opacity: 0.8;
-    }
-
-    .tear {
-      position: absolute;
-      top: -20px;
-      font-size: 22px;
-      animation: rain 3s linear infinite;
-      opacity: 0.6;
-    }
-
-    @keyframes rain {
-      to {
-        transform: translateY(110vh);
-        opacity: 0;
-      }
     }
 
     @keyframes float {
@@ -132,14 +126,39 @@
       }
     }
 
+    /* SAD MODE */
+    .sad-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,15,25,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 999;
+      color: white;
+    }
+
+    .sad-emoji { font-size: 120px; }
+    .sad-text { font-size: 26px; margin-top: 20px; }
+
+    .tear {
+      position: absolute;
+      top: -20px;
+      font-size: 22px;
+      animation: rain 3s linear infinite;
+    }
+
+    @keyframes rain {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: scale(0.96); }
       to { opacity: 1; transform: scale(1); }
-    }
-
-    @keyframes fadeInSad {
-      from { opacity: 0; }
-      to { opacity: 1; }
     }
   </style>
 </head>
@@ -148,9 +167,17 @@
   <div class="bg-shape bg1"></div>
   <div class="bg-shape bg2"></div>
 
-  <!-- Muzyka romantyczna -->
+  <!-- Zwierzaki -->
+  <div class="pet dog">🐶</div>
+  <div class="pet cat">🐱</div>
+
+  <!-- Muzyka -->
   <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/10/26/audio_52cfc5e3de.mp3" type="audio/mpeg">
+    <source src="https://cdn.pixabay.com/download/audio/2022/10/26/audio_52cfc5e3de.mp3">
+  </audio>
+
+  <audio id="sad">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_1c3f5e9b8c.mp3">
   </audio>
 
   <div class="card" id="card">
@@ -163,28 +190,26 @@
     const yesBtn = document.getElementById("yes");
     const noBtn = document.getElementById("no");
     const card = document.getElementById("card");
+    const sadAudio = document.getElementById("sad");
 
     yesBtn.addEventListener("click", () => {
       card.innerHTML = `
         <h1>Julia ❤️</h1>
         <p>
-          Od kiedy jesteś w moim życiu,<br>
-          każdy dzień ma w sobie coś wyjątkowego.<br><br>
-
-          Twoja obecność daje mi spokój,<br>
-          a Twój uśmiech potrafi zmienić wszystko.<br><br>
-
+          Każdy dzień z Tobą byłby piękniejszy.<br><br>
           Z całego serca,<br><strong>Konrad</strong>
         </p>
       `;
     });
 
     noBtn.addEventListener("click", () => {
+      sadAudio.play();
+
       const overlay = document.createElement("div");
       overlay.className = "sad-overlay";
       overlay.innerHTML = `
-        😔
-        <div class="sad-text">Chyba potrzebuję chwili…</div>
+        <div class="sad-emoji">😔</div>
+        <div class="sad-text">Ale i tak będę czekał…</div>
       `;
       document.body.appendChild(overlay);
 
@@ -193,11 +218,11 @@
         tear.className = "tear";
         tear.textContent = "💧";
         tear.style.left = Math.random() * 100 + "vw";
-        tear.style.animationDuration = (Math.random() * 2 + 2) + "s";
         document.body.appendChild(tear);
-
         setTimeout(() => tear.remove(), 3000);
       }
+
+      setTimeout(() => overlay.remove(), 5000);
     });
 
     function createHeart() {
@@ -209,7 +234,7 @@
       setTimeout(() => heart.remove(), 9000);
     }
 
-    setInterval(createHeart, 650);
+    setInterval(createHeart, 700);
   </script>
 
 </body>
